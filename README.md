@@ -21,8 +21,8 @@ library에는 웹사이트 크롤링 코드(Youtube, Naver news, ilbe, namuwiki)
 
 1.1. 데이터 크롤링
 > Google BERT multilingual 모델 사용. <정확한 모델 체크>
-> 추가 pre-training을 위한 300만 구어체 문장 수집
-> fine-tunning을 위한 10만개의 댓글 수집.
+추가 pre-training을 위한 300만 구어체 문장 수집
+fine-tunning을 위한 10만개의 댓글 수집.
  
 1.2. 데이터 전처리 및 라벨링
 > 구어체 문장 tokenize를 위한 vocab txt 수정 (기존 multilingual 버전으로는 토크나이징 불가)
@@ -37,10 +37,10 @@ library에는 웹사이트 크롤링 코드(Youtube, Naver news, ilbe, namuwiki)
 > (욕설 판단만 가능한 상태)
  
 1.4. 추가 모델링 설계 및 마스킹 알고리즘 설계
-    tensorflow -> pytorch로 전환(pre-trained model 또한 변환)
-    형태소별 욕설 여부 라벨링 없이 욕설 위치 파악을 위한 puri attention layer 추가
-    Token 단위 확률 비교를 통한 마스킹 알고리즘 구현
-    인자 변경 및 비교를 통해 최선의 모델 선정
+> tensorflow -> pytorch로 전환(pre-trained model 또한 변환)
+형태소별 욕설 여부 라벨링 없이 욕설 위치 파악을 위한 puri attention layer 추가
+Token 단위 확률 비교를 통한 마스킹 알고리즘 구현
+인자 변경 및 비교를 통해 최선의 모델 선정
  
 1.5. 웹 서비스 구현
 > AWS EC2(t2.medium, ubuntu), Nginx를 사용하여 서버 구축
