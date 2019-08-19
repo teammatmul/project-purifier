@@ -49,17 +49,17 @@ library에는 웹사이트 크롤링 코드(Youtube, Naver news, ilbe, namuwiki)
 ## 2. puri attention
  - 실제 코드에서는 단어 단위로 tokenize 되지는 않으나, 편의상 단어 토큰이라 표현하였습니다.
 
-1) 메인 아이디어
+    1) 메인 아이디어
     process 3단계까지 완성된 저희의 모델은 입력된 문장 내에 욕설이 있는지 없는지에 대한 classification만 가능했습니다. 물론 이 자체만으로도 문맥적인 욕설을 잡아 낼 수 있다는점에서 기존 rule-based 모델보다 우세하다 할 수 있었습니다만, 문장 내 모든 단어를 순차적으로 조합하는 캐스캐이드 방식으로 마스킹 알고리즘 구현시 2^n번의 예측이 필요하여, 욕설이 있는 부분을 찾아 마스킹하는데에는 부적합 했습니다.
     하여 모델이 classification을 할 때 어떤 위치 혹은 정보를 기반으로 판단을 하는지를 알아내고, 파악된 위치를 마스킹 하는 방식을 생각하게 되었습니다.
 
-2) Attention과 CLS 토큰의 의미
+    2) Attention과 CLS 토큰의 의미
     Attention 함수는 주어진 Q(Query)에 대해서 모든 K(Key)와의 유사도를 구하고, 이 유사도를 가중치로 하여 각각의 V(Value)에 반영해줍니다. BERT는 Q,K,V가 모두 동일한 self attention을 사용하고 있으므로, 이는 입력 문장의 모든 단어 벡터들이 서로를 바라보고 서로를 반영한다 라고 말할수 있습니다.
     BERT는 classification(마지막 softmax layer)에 오직 pooler를 통과한 CLS 토큰 만을 사용합니다. 이는 임베딩 완료된 문장이 12개의 attention layer를 통과하는 동안 문장의 앞뒤 문맥에 대한정보가 CLS 토큰에 담기게 되기 때문입니다. <톺아보기 그림 추가>
     버트 톺아보기 페이지를 참조한 PCA visualization입니다. 각각의 attention layer output을 투영하여 시각화한 것인데, -12 layer에서는 각각의 벡터들이 한눈에 구분이 가지만, attention layer를 하나씩 통과할수록 점점 섞여감을 알 수 있습니다.
     즉, classification layer에서 0or1의 판단을 내리게 되는 기준은 CLS 토큰이 되고, CLS 토큰은 전체 문장에 대한 문맥 정보를 갖고 있습니다.(정확히 하자면 모든 토큰이 CLS 토큰처럼 문맥정보가 섞이게 되지만 CLS 토큰만 사용하는게 맞습니다.)
 
-3) puri attention
+    3) puri attention
     puri attention layer의 첫번째 핵심은 모든 문맥 정보를 담고있는 CLS 토큰으로 아직 문맥 정보들이 뒤섞이지 않은 임베딩 output을 바라보게(유사도를 구하게) 하는데에 있습니다.(즉, Q는 CLS토큰, K와 V는 임베딩 output이 됩니다)
     
     CLS token matmul embedding output = AS, AS(softmax)=AP <코드로>
