@@ -12,12 +12,12 @@ library에는 웹사이트 크롤링 코드(Youtube, Naver news, ilbe, namuwiki)
 ## 목차
 
 > ### 1. Project process
-> ### 2. puri attention
+> ### 2. Puri attention
 > ### 3. 마스킹 알고리즘
 > ### 4. 코드 사용법
 
 
-## 1. project process
+## 1. Project process
 
 #### 1.1. 데이터 크롤링
 - Google BERT multilingual 모델 사용. <정확한 모델 체크>
@@ -46,7 +46,7 @@ library에는 웹사이트 크롤링 코드(Youtube, Naver news, ilbe, namuwiki)
 - AWS EC2(t2.medium, ubuntu), Nginx를 사용하여 서버 구축
 - Flask를 사용하여 모델 구동
  
-## 2. puri attention
+## 2. Puri attention
  - 실제 코드에서는 단어 단위로 tokenize 되지는 않으나, 편의상 단어 토큰이라 표현하였습니다.
 
 #### 2.1. 메인 아이디어
