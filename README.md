@@ -21,9 +21,9 @@ library에는 웹사이트 크롤링 코드(Youtube, Naver news, ilbe, namuwiki)
 
 1) 데이터 크롤링
 
- * Google BERT multilingual 모델 사용. <정확한 모델 체크>
- * 추가 pre-training을 위한 300만 구어체 문장 수집
- * fine-tunning을 위한 10만개의 댓글 수집.
+  * Google BERT multilingual 모델 사용. <정확한 모델 체크>
+  * 추가 pre-training을 위한 300만 구어체 문장 수집
+  * fine-tunning을 위한 10만개의 댓글 수집.
  
 2) 데이터 전처리 및 라벨링
 
