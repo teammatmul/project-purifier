@@ -1,5 +1,5 @@
-# project-purifier
--------------------------------------
+project-purifier
+=============================
 
 Project-purifier는 BERT 모델을 활용한 욕설 판단 및 마스킹 서비스입니다.
 library에는 웹사이트 크롤링 코드(Youtube, Naver news, ilbe, namuwiki), 크롤링 데이터 전처리 코드, 한글 구어체 300만 문장이 추가 학습된 pre-trained model weights, 입력 문장 욕설 판단 및 마스킹 코드가 포함되어 있습니다.
@@ -9,14 +9,15 @@ library에는 웹사이트 크롤링 코드(Youtube, Naver news, ilbe, namuwiki)
 (We learned how to use pytorch by HuggingFace's code and we made purifier model based on their's. So, special thanks to HuggingFace!)
 
 
-목차
-project process
-puri attention
-마스킹 알고리즘
-코드 사용법
+## 목차
+* * *
+ 1. project process
+ 2. puri attention
+ 3. 마스킹 알고리즘
+ 4. 코드 사용법
 
 
-1. project process
+## 1. project process
 1) 데이터 크롤링
  - Google BERT multilingual 모델 사용. <정확한 모델 체크>
  - 추가 pre-training을 위한 300만 구어체 문장 수집
