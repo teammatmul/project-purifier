@@ -5,7 +5,7 @@ Project-Purifier
 Project-Purifier는 BERT 모델을 활용한 욕설 판단 및 마스킹 서비스입니다.
 library에는 웹사이트 크롤링 코드(Youtube, Naver news, ilbe, namuwiki), 크롤링 데이터 전처리 코드, 한글 구어체 300만 문장이 추가 학습된 pre-trained model weights, 입력 문장 욕설 판단 및 마스킹 코드가 포함되어 있습니다.
 
-저희의 서비스는 google mutilingual BERT model과 HuggingFace의 pytorch BERT 구현을 기반으로 이루어졌으며, puri attention layer의 추가와 몇가지 트릭으로 구성되었습니다. torch1.1과 Python 3.6 버전에서 테스트 되었습니다.
+purifier 서비스는 google mutilingual BERT model과 HuggingFace의 pytorch BERT 구현을 기반으로 이루어졌으며, puri attention layer의 추가와 몇가지 트릭으로 구성되었습니다. torch1.1과 Python 3.6 버전에서 테스트 되었습니다.
 
 (We learned how to use pytorch by HuggingFace's code and we made purifier model based on their's. So, special thanks to HuggingFace!)
 
