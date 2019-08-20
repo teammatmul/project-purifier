@@ -71,21 +71,30 @@ library에는 웹사이트 크롤링 코드(Youtube, Naver news, ilbe, namuwiki)
     Attention Prob = softmax(Attention Score)
     ```
 - 여기서 나온 각 단어 토큰 별 Attention Prob(AP)을 비교하여(CLS와 SEP 토큰은 mask 처리되어 0, 실제 토큰만 확률을 갖습니다) 일정 이상의 확률일 경우 욕설로 판단하고 해당 단어를 마스킹하게 됩니다.<AP 그래프 사진>
-- puri attention layer의 두번째 핵심은 Attention시 Q,K,V의 hidden_state를 없애고 단순 matmul연산으로 바꾸는데에 있습니다. 이는 문맥 정보는 모두 CLS 토큰이 가지고 있으니, 마스킹에 쓰일 AP를 계산할때, 각 단어들의 본래 벡터(임베딩된)에 최대한 집중하게 만들기 위해서(weight에 의한 변형 없이)입니다. 또한, classification layer에 들어갈 AP를 최대한 그대로 넣어주고자 함입니다.
+
+- puri attention layer의 두번째 핵심은 Attention시 V의 hidden_state를 없애고 단순 matmul연산으로 바꾸는데에 있습니다. 이는 문맥 정보는 모두 CLS 토큰이 가지고 있으니, 마스킹에 쓰일 AP를 계산할때, 각 단어들의 본래 벡터(임베딩된)에 최대한 집중하게 만들기 위해서(weight에 의한 변형 없이)입니다. 또한, classification layer에 들어갈 AP를 최대한 그대로 넣어주고자 함입니다.
+
 - 정리하자면 **"purifier 모델은 puri attention을 통해 fine-tunning 동안 CLS 토큰과 임베딩 처리된 입력 문장의 유사도를 계산하여 그중 값이 높은 토큰을 욕설로 학습해 나간다"** 라고 할 수 있습니다.
 
+#### 2.4. Experiment
+- 기존 attention layer에서 CLS 토큰이 자기 자신을 바라보는 경우에도 attention mask를 씌워보았으나 큰 차이는 없었습니다.
+- Puri attention layer에서 Q,K,V 값을 인자로 설정할 수 있게 하여 여러가지 경우의 수를 실험하였습니다.
+- Q (CLS 토큰) 의 경우 12번째 attention layer를 통과한 후 기존 pooler를 통과한 경우가 조금 더 높은 정확도를 얻을 수 있었습니다.
+- K,V 의 경우 꼭 Embedding output이 아니라 attention layer의 초반부(1~3) output 을 조합하여 사용한 경우에도 유사한 결과를 얻을 수 있었습니다.
+- Q,K의 hidden_state를 없애주는 경우에도 유사한 결과를 얻을 수 있었으나, 둘 다 없애는 경우에는 문장 내 욕설 유무 판단에서 현저히 낮은 정확도를 가져왔습니다. 하지만 AP의 욕설과 비욕설 단어의 확률 차이를 내는데에는 없애주는 경우가 더 유용했습니다.
+- 최종 모델 판단에는 문장 내 욕설의 유무 판단보다는 욕설의 위치를 찾아내는데에 조금 더 초점을 두었습니다.
 
 ## 3. 마스킹 알고리즘
 
 - 문장 전체를 봤을때 욕설 판단이 1로 나오는 경우(욕설이 있는 문장)에만 마스킹 알고리즘이 동작합니다.
-- 핵심은 puri attention에서 나오는 Attention Prob을 비교하여 높은 값을 욕설이라 판단하는 것입니다.
+- 핵심은 puri attention에서 나오는 Attention Prob을 비교하여 가장 높은 값을 욕설이라 판단하는 것입니다.
    
 - BERT의 tokenize 방식이 단어 혹은 형태소 단위가 아니라, wordpiece 방식으로 구성되어 있어 한 토큰이 일정 확률을 넘어선 경우, 그 토큰을 포함하고 있는 단어 전체를 마스킹 하는 방식으로 구현하였습니다.
    
-- 욕이라 판단하는 확률은 1/토큰갯수
+- 가장 높은 확률의 단어를 마스킹하고, 욕설 판단이 0(욕설이 없는 문장)이 될때까지 반복합니다.
    
-- <"안녕하세요 씨발"을 예시로 ppt 하나 찍어서 캡쳐해서 올리기>
+- <"안녕하세요 씨발 반가워요 개돼지!"를 예시로 순서대로 바뀌는거 찍어서 캡쳐해서 올리기>
  
 ## 4. 코드 사용법
 
-    <puri 모듈화 시켜놓은거 걍 python import 해서 쓰는식으로 몇줄 적기>
+    <puri 모듈화 시켜놓은거 python import 해서 쓰는식으로 적기>
