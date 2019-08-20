@@ -1,5 +1,6 @@
 Project-Purifier
 =============================
+아직 오픈 전입니다!
 
 Project-Purifier는 BERT 모델을 활용한 욕설 판단 및 마스킹 서비스입니다.
 library에는 웹사이트 크롤링 코드(Youtube, Naver news, ilbe, namuwiki), 크롤링 데이터 전처리 코드, 한글 구어체 300만 문장이 추가 학습된 pre-trained model weights, 입력 문장 욕설 판단 및 마스킹 코드가 포함되어 있습니다.
