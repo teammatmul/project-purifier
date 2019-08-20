@@ -20,7 +20,7 @@ library에는 웹사이트 크롤링 코드(Youtube, Naver news, ilbe, namuwiki)
 ## 1. Project process
 
 #### 1.1. 데이터 크롤링
-- Google BERT multilingual 모델 사용. <정확한 모델 체크>
+- Google BERT-base multilingual 모델 사용.
 - 추가 pre-training을 위한 300만 구어체 문장 수집
 - fine-tunning을 위한 10만개의 댓글 수집.
  
@@ -33,8 +33,7 @@ library에는 웹사이트 크롤링 코드(Youtube, Naver news, ilbe, namuwiki)
 - 기존 multilingual 모델에 300만 구어체 문장 추가 학습.
 - (구글 BERT tensorflow 코드 사용) <colab 코드 정리 필요>
 - 기 학습된 pretrained 모델별 fine-tuning
-- 학습 완료된 모델 별 정확도 비교 후 모델 선정 <정확도 비교하는거 보여줄 수 있으면 좋을듯>
-- (욕설 판단만 가능한 상태)
+- 학습 완료된 모델 별 정확도 비교 후 모델 선정 (욕설 판단만 가능한 상태) <정확도 비교하는거 보여줄 수 있으면 좋을듯> 
  
 #### 1.4. 추가 모델링 설계 및 마스킹 알고리즘 설계
 - tensorflow -> pytorch로 전환(pre-trained model 또한 변환)
