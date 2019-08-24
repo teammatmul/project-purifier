@@ -63,7 +63,7 @@ purifier 서비스는 google mutilingual BERT model과 HuggingFace의 pytorch BE
 
 ![톺아보기](/img/pool_mean.png)
 
-- 버트 톺아보기 페이지를 참조한 PCA visualization입니다. 각각의 attention layer output을 투영하여 시각화한 것인데, -12 layer에서는 각각의 벡터들이 한눈에 구분이 가지만, attention layer를 하나씩 통과할수록 점점 섞여감을 알 수 있습니다.
+- [버트 톺아보기 페이지](http://docs.likejazz.com/bert/)를 참조한 PCA visualization입니다. 각각의 attention layer output을 투영하여 시각화한 것인데, -12 layer에서는 각각의 벡터들이 한눈에 구분이 가지만, attention layer를 하나씩 통과할수록 점점 섞여감을 알 수 있습니다.
 - 즉, classification layer에서 0or1의 판단을 내리게 되는 기준은 CLS 토큰이 되고, CLS 토큰은 전체 문장에 대한 문맥 정보를 갖고 있습니다.(정확히 하자면 모든 토큰이 CLS 토큰처럼 문맥정보가 섞이게 되지만 CLS 토큰만 사용하는게 맞습니다.)
 
 #### 2.3. puri attention
