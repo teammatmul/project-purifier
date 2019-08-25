@@ -79,7 +79,7 @@ Purifier 서비스는 [google mutilingual BERT model](https://github.com/google-
     ```
 - 여기서 나온 각 단어 토큰 별 Attention Prob(AP)을 비교하여(CLS와 SEP 토큰은 mask 처리로 인해 그 값이 0이 되고, 실제 토큰만 확률을 갖습니다) 일정 이상의 확률일 경우 욕설로 판단하고 해당 단어를 마스킹하게 됩니다.
 
-예문: '씨발새1끼님아 제에발 잘좀 해주셨음 좋겠어요. 아시겠어요 병신아?'
+     예문: '씨발새1끼님아 제에발 잘좀 해주셨음 좋겠어요. 아시겠어요 병신아?'
 ![ap_graph](/img/ap_graph.png)
 
 
