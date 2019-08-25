@@ -111,5 +111,5 @@ Purifier 서비스는 [google mutilingual BERT model](https://github.com/google-
     from final_modeling import BertForSequenceClassification
     
     model = BertForSequenceClassification.from_pretrained('./data/', num_labels=2)
-    puri.single_sentence_masking_percent("안녕하세요 씨발 반가워요 개돼지!", model)
+    puri.single_sentence_masking_percent("안녕하세요 씨발 반가워요!", model)
     ```
