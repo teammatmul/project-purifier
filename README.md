@@ -3,9 +3,11 @@ Project-Purifier
 아직 오픈 전입니다!
 
 Project-Purifier는 BERT 모델을 활용한 욕설 판단 및 마스킹 서비스입니다.
-library에는 웹사이트 크롤링 코드(Youtube, Naver news, ilbe, namuwiki), 크롤링 데이터 전처리 코드, 한글 구어체 300만 문장이 추가 학습된 pre-trained model weights, 입력 문장 욕설 판단 및 마스킹 코드가 포함되어 있습니다.
+library에는 웹사이트 크롤링 코드(Youtube, Naver news, ilbe, namuwiki), 크롤링 데이터 전처리 코드, 한글 구어체 300만 문장이 추가 학습 코드, 욕설 판단을 위한 fine-tunning 학습 코드, 입력 문장 욕설 판단 및 마스킹 코드가 포함되어 있습니다.
 
-purifier 서비스는 google mutilingual BERT model과 HuggingFace의 pytorch BERT 구현을 기반으로 이루어졌으며, puri attention layer의 추가와 몇가지 트릭으로 구성되었습니다. torch1.1과 Python 3.6 버전에서 테스트 되었습니다.
+Purifier 서비스는 [google mutilingual BERT model](https://github.com/google-research/bert)과 [HuggingFace의 pytorch BERT 구현](https://github.com/huggingface/pytorch-transformers)을 기반으로 이루어졌으며, puri attention layer의 추가와 몇가지 트릭으로 구성되었습니다. torch1.1과 Python 3.6 버전에서 테스트 되었습니다.
+
+학습 관련 디바이스는 모두 [colab](https://colab.research.google.com)의 T4 gpu를 사용했고, 관련 notebook 파일도 정리해 두었습니다.
 
 (We learned how to use pytorch by HuggingFace's code and we made purifier model based on their's. So, special thanks to HuggingFace!)
 
@@ -36,7 +38,7 @@ purifier 서비스는 google mutilingual BERT model과 HuggingFace의 pytorch BE
  
 #### 1.3. 욕설 학습 및 모델 선정
 - 기존 multilingual 모델에 300만 구어체 문장 추가 학습.
-- (구글 BERT tensorflow 코드 사용) <colab 코드 정리 필요>
+- (구글 BERT tensorflow 코드 사용)
 - 기 학습된 pretrained 모델별 fine-tuning
 - 학습 완료된 모델 별 정확도 비교 후 모델 선정 (욕설 판단만 가능한 상태) <정확도 비교하는거 보여줄 수 있으면 좋을듯> 
  
@@ -87,7 +89,7 @@ purifier 서비스는 google mutilingual BERT model과 HuggingFace의 pytorch BE
 - Q (CLS 토큰) 의 경우 12번째 attention layer를 통과한 후 기존 pooler를 통과한 경우가 조금 더 높은 정확도를 얻을 수 있었습니다.
 - K,V 의 경우 꼭 Embedding output이 아니라 attention layer의 초반부(1~3) output 을 조합하여 사용한 경우에도 유사한 결과를 얻을 수 있었습니다.
 - Q,K의 hidden_state를 없애주는 경우에도 유사한 결과를 얻을 수 있었으나, 둘 다 없애는 경우에는 문장 내 욕설 유무 판단에서 현저히 낮은 정확도를 가져왔습니다. 하지만 AP의 욕설과 비욕설 단어의 확률 차이를 내는데에는 없애주는 경우가 더 유용했습니다.
-- 최종 모델 선정에는 문장 내 욕설의 유무 판단보다는 욕설의 위치를 찾아내는데에 조금 더 초점을 두었습니다.
+- 최종 모델은 문장 내 욕설의 유무 판단과 욕설의 위치를 찾는 성능을 종합하여 선정하였습니다.
 
 ## 3. 마스킹 알고리즘
 
