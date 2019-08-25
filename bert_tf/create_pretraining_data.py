@@ -1,3 +1,11 @@
+# coding=utf-8
+
+# Copyright 2019 team Purifier
+# Copyright 2018 The Google AI Language Team Authors and The HuggingFace Inc. team.
+# Copyright (c) 2018, NVIDIA CORPORATION.  All rights reserved.
+# Licensed under the Apache License, Version 2.0 (the "License")
+
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
