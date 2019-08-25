@@ -1,6 +1,6 @@
 Project-Purifier
 =============================
-[purifier 서비스 사이트(www.matmul.net)](http://www.matmul.net)
+[Purifier 서비스 사이트(www.matmul.net)](http://www.matmul.net)
 
 Project-Purifier는 BERT 모델을 활용한 욕설 판단 및 마스킹 서비스입니다.
 library에는 웹사이트 크롤링 코드(Youtube, Naver news, ilbe, namuwiki), 크롤링 데이터 전처리 코드, 한글 구어체 300만 문장이 추가로 학습된 [pre-trained 모델](https://drive.google.com/open?id=1XEFGfLCa2bCQiBSlkY0_ZlirXg4c2mPB), 욕설 판단을 위한 fine-tunning 학습 코드, 입력 문장 욕설 판단 및 마스킹 코드가 포함되어 있습니다.
