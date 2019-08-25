@@ -5,7 +5,7 @@ library에는 웹사이트 크롤링 코드(Youtube, Naver news, ilbe, namuwiki)
 
 Purifier 서비스는 [google mutilingual BERT model](https://github.com/google-research/bert)과 [HuggingFace의 pytorch BERT 구현](https://github.com/huggingface/pytorch-transformers)을 기반으로 이루어졌으며, puri attention layer의 추가와 몇가지 트릭으로 구성되었습니다. torch1.1과 Python 3.6 버전에서 테스트 되었습니다.
 
-학습 관련 디바이스는 모두 [colab](https://colab.research.google.com)의 T4 gpu를 사용했고, 관련 notebook 파일도 정리해 두었습니다.
+학습 관련 디바이스는 모두 [colab](https://colab.research.google.com)의 T4 gpu를 사용했습니다.
 
 (We learned how to use pytorch by HuggingFace's code and we made purifier model based on their's. So, special thanks to HuggingFace!)
 
