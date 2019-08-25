@@ -87,7 +87,7 @@ Purifier 서비스는 [google mutilingual BERT model](https://github.com/google-
 - 기존 attention layer에서 CLS 토큰이 자기 자신을 바라보는 경우에도 attention mask를 씌워보았으나 큰 차이는 없었습니다.
 - Puri attention layer에서 Q,K,V 값을 인자로 설정할 수 있게 하여 여러가지 경우의 수를 실험하였습니다.
 - Q (CLS 토큰) 의 경우 12번째 attention layer를 통과한 후 기존 pooler를 통과한 경우가 조금 더 높은 정확도를 얻을 수 있었습니다.
-- K,V 의 경우 꼭 Embedding output이 아니라 attention layer의 초반부(1~3) output 을 조합하여 사용한 경우에도 유사한 결과를 얻을 수 있었습니다.
+- K,V 의 경우 꼭 Embedding output이 아니라 attention layer의 초반부(1~3) output 을 조합하여 Layer Normalization을 적용해 사용한 경우에 조금 더 높은 정확도를 얻을 수 있었습니다.
 - Q,K의 hidden_state를 없애주는 경우에도 유사한 결과를 얻을 수 있었으나, 둘 다 없애는 경우에는 문장 내 욕설 유무 판단에서 현저히 낮은 정확도를 가져왔습니다. 하지만 AP의 욕설과 비욕설 단어의 확률 차이를 내는데에는 없애주는 경우가 더 유용했습니다.
 - 최종 모델은 문장 내 욕설의 유무 판단과 욕설의 위치를 찾는 성능을 종합하여 선정하였습니다.
 
