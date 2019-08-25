@@ -101,8 +101,8 @@ Purifier 서비스는 [google mutilingual BERT model](https://github.com/google-
 - BERT의 tokenize 방식이 단어 혹은 형태소 단위가 아니라, wordpiece 방식으로 구성되어 있어 한 토큰이 일정 확률을 넘어선 경우, 그 토큰을 포함하고 있는 단어 전체를 마스킹 하는 방식으로 구현하였습니다.
    
 - 가장 높은 확률의 토큰이 포함된 단어를 마스킹하고, 욕설 판단이 0(욕설이 없는 문장)이 될때까지 같은 과정을 반복합니다.
-   
-- <"안녕하세요 씨발 반가워요 개돼지!"를 예시로 순서대로 바뀌는거 찍어서 캡쳐해서 올리기>
+
+![example_show](/img/example.gif)
  
 ## 4. 코드 간단 사용법
     ```
