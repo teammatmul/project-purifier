@@ -82,7 +82,7 @@ Purifier 서비스는 [google mutilingual BERT model](https://github.com/google-
 ![ap_graph](/img/ap_graph.png)
 
 
-- puri attention layer의 두번째 핵심은 Attention시 V의 hidden_state를 없애고 단순 matmul연산으로 바꾸는데에 있습니다. 이는 문맥 정보는 모두 CLS 토큰이 가지고 있으니, 마스킹에 쓰일 AP를 계산할때, 각 단어들의 본래 벡터(임베딩된)에 최대한 집중하게 만들기 위해서(weight에 의한 변형 없이)입니다. 또한, classification layer에 들어갈 AP를 최대한 그대로 위해서 입니다.
+- puri attention layer의 두번째 핵심은 Attention시 V의 hidden_state를 없애고 단순 matmul연산으로 바꾸는데에 있습니다. 이는 문맥 정보는 모두 CLS 토큰이 가지고 있으니, 마스킹에 쓰일 AP를 계산할때, 각 단어들의 본래 벡터(임베딩된)에 최대한 집중하게 만들기 위해서(weight에 의한 변형 없이)입니다. 또한, classification layer에 들어갈 AP를 최대한 그대로 전달하기 위함입니다.
 
 - 정리하자면 **"purifier 모델은 puri attention을 통해 fine-tunning 동안 CLS 토큰과 임베딩 처리된 입력 문장의 유사도를 계산하여 그중 값이 높은 토큰을 욕설로 학습해 나간다"** 라고 할 수 있습니다.
 
