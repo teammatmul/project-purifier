@@ -14,7 +14,7 @@ Flask==1.1.1
 hibagent==1.0.1
 idna==2.8
 itsdangerous==1.1.0
-Jinja2==2.10.1
+Jinja2==2.11.3
 jmespath==0.9.4
 joblib==0.13.2
 jsonpatch==1.10
