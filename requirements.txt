@@ -35,7 +35,7 @@ python-dateutil==2.8.0
 python-debian==0.1.27
 python-systemd==231
 pytz==2019.2
-PyYAML==4.2b1
+PyYAML==5.4
 requests==2.22.0
 s3transfer==0.2.1
 scikit-learn==0.21.3
