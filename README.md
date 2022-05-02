@@ -1,6 +1,7 @@
 Project-Purifier
 =============================
 [Purifier 서비스(www.matmul.net)](http://www.matmul.net)
+
 현재는 V2로 서비스 하고 있습니다.(https://github.com/teammatmul/project-purifier_v2) (Monologg님의 KoElectra 기반으로 재학습한 모델 (https://github.com/monologg/KoELECTRA))
 
 Project-Purifier는 BERT 모델을 활용한 욕설 판단 및 마스킹 서비스입니다.
